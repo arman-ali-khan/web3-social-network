@@ -24,7 +24,7 @@ export function MarketplaceView() {
   const [searchQuery, setSearchQuery] = useState('');
 
   return (
-    <div className="h-full flex flex-col">
+    <div className="h-full flex overflow-y-auto flex-col">
       {/* Search and Filters */}
       <div className="border-b p-4 space-y-4">
         <div className="flex items-center space-x-2">

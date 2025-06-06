@@ -37,6 +37,8 @@ export const useAuthStore = create<AuthState>()(
       
       logout: () => {
         set({ user: null, isAuthenticated: false });
+        // Clear any other stored data if needed
+        localStorage.removeItem('auth-storage');
       },
       
       updateUser: (updates: Partial<User>) => {
