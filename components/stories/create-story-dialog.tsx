@@ -112,6 +112,7 @@ export function CreateStoryDialog({ open, onOpenChange, onStoryCreated }: Create
         likes: 0,
         replies: 0,
         duration: storyType === 'text' ? 5 : storyType === 'image' ? 5 : 10,
+        viewedBy: [], // Add the missing viewedBy property
       };
 
       onStoryCreated?.(newStory);

@@ -30,7 +30,7 @@ const navItems = [
 export function FloatingBottomNav({ activeView, onViewChange }: FloatingBottomNavProps) {
   return (
     <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 rounded-full floating-nav">
-      <div className="bg-background/95 backdrop-blur-md border rounded-full shadow-lg px-3 py-2 dark:bg-blue-950/20 dark:backdrop-blur-xl dark:border-blue-500/20 dark:shadow-blue-500/10">
+      <div className="bg-background/95 backdrop-blur-md border rounded-full shadow-lg px-3 py-2 dark:bg-gray-900/20 dark:backdrop-blur-xl dark:border-gray-700 dark:shadow-gray-900/10">
         <div className="flex items-center space-x-2">
           {navItems.map((item, index) => (
             <div key={item.id} className="relative">
@@ -40,8 +40,8 @@ export function FloatingBottomNav({ activeView, onViewChange }: FloatingBottomNa
                 className={cn(
                   "h-10 w-10 rounded-full p-0 relative transition-all duration-300 nav-button",
                   activeView === item.id 
-                    ? "bg-primary text-primary-foreground shadow-lg scale-110 dark:bg-blue-500 dark:shadow-blue-500/30 dark:shadow-lg nav-active" 
-                    : "hover:bg-muted text-muted-foreground hover:text-foreground hover:scale-105 dark:hover:bg-blue-500/20 dark:hover:text-blue-300 dark:hover:shadow-blue-500/20"
+                    ? "bg-primary text-primary-foreground shadow-lg scale-110 dark:bg-gray-700 dark:shadow-gray-700/30 dark:shadow-lg nav-active" 
+                    : "hover:bg-muted text-muted-foreground hover:text-foreground hover:scale-105 dark:hover:bg-gray-800 dark:hover:text-gray-300 dark:hover:shadow-gray-800/20"
                 )}
                 onClick={() => onViewChange(item.id)}
               >
@@ -51,8 +51,8 @@ export function FloatingBottomNav({ activeView, onViewChange }: FloatingBottomNa
             </div>
           ))}
           
-          {/* Separator with blue accent */}
-          <div className="w-px h-6 bg-border mx-2 dark:bg-blue-500/30" />
+          {/* Separator with gray accent */}
+          <div className="w-px h-6 bg-border mx-2 dark:bg-gray-700" />
           
           {/* Chat button with notification */}
           <div className="relative">
@@ -62,8 +62,8 @@ export function FloatingBottomNav({ activeView, onViewChange }: FloatingBottomNa
               className={cn(
                 "h-10 w-10 rounded-full p-0 relative transition-all duration-300 nav-button",
                 activeView === 'chat' 
-                  ? "bg-primary text-primary-foreground shadow-lg scale-110 dark:bg-blue-500 dark:shadow-blue-500/30 dark:shadow-lg nav-active" 
-                  : "hover:bg-muted text-muted-foreground hover:text-foreground hover:scale-105 dark:hover:bg-blue-500/20 dark:hover:text-blue-300 dark:hover:shadow-blue-500/20"
+                  ? "bg-primary text-primary-foreground shadow-lg scale-110 dark:bg-gray-700 dark:shadow-gray-700/30 dark:shadow-lg nav-active" 
+                  : "hover:bg-muted text-muted-foreground hover:text-foreground hover:scale-105 dark:hover:bg-gray-800 dark:hover:text-gray-300 dark:hover:shadow-gray-800/20"
               )}
               onClick={() => onViewChange('chat')}
             >
@@ -82,7 +82,7 @@ export function FloatingBottomNav({ activeView, onViewChange }: FloatingBottomNa
           <Button
             variant="outline"
             size="sm"
-            className="h-10 w-10 rounded-full p-0 border-2 border-primary/20 hover:border-primary/40 hover:bg-primary/5 transition-all duration-300 hover:scale-105 dark:border-blue-500/30 dark:hover:border-blue-400/50 dark:hover:bg-blue-500/10 dark:hover:shadow-blue-500/20"
+            className="h-10 w-10 rounded-full p-0 border-2 border-primary/20 hover:border-primary/40 hover:bg-primary/5 transition-all duration-300 hover:scale-105 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-800 dark:hover:shadow-gray-800/20"
           >
             <Plus className="h-4 w-4" />
             <span className="sr-only">Create</span>
@@ -90,9 +90,9 @@ export function FloatingBottomNav({ activeView, onViewChange }: FloatingBottomNa
         </div>
       </div>
       
-      {/* Active view indicator with blue glow */}
+      {/* Active view indicator with gray glow */}
       <div className="absolute -bottom-2 left-1/2 -translate-x-1/2">
-        <div className="w-1 h-1 bg-primary rounded-full dark:bg-blue-400 dark:shadow-blue-400/50 dark:shadow-sm" />
+        <div className="w-1 h-1 bg-primary rounded-full dark:bg-gray-400 dark:shadow-gray-400/50 dark:shadow-sm" />
       </div>
     </div>
   );

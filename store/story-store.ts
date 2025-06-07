@@ -193,8 +193,8 @@ export const useStoryStore = create<StoryState>()(
           }
           groups[userId].stories.push(story);
           
-          // Check if user has unviewed stories
-          if (!story.viewedBy.includes(currentUserId)) {
+          // Check if user has unviewed stories - add safety check for viewedBy
+          if (story.viewedBy && !story.viewedBy.includes(currentUserId)) {
             groups[userId].hasUnviewed = true;
           }
           
@@ -211,6 +211,17 @@ export const useStoryStore = create<StoryState>()(
     }),
     {
       name: 'story-storage',
+      deserialize: (str) => {
+        const state = JSON.parse(str);
+        // Convert timestamp strings back to Date objects
+        if (state.state && state.state.stories) {
+          state.state.stories = state.state.stories.map((story: any) => ({
+            ...story,
+            timestamp: new Date(story.timestamp),
+          }));
+        }
+        return state;
+      },
     }
   )
 );
