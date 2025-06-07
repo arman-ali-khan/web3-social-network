@@ -8,7 +8,8 @@ import {
   MessageCircle, 
   ShoppingBag, 
   Wallet, 
-  User 
+  User,
+  Camera
 } from 'lucide-react';
 
 interface BottomNavigationProps {
@@ -18,6 +19,7 @@ interface BottomNavigationProps {
 
 const navItems = [
   { id: 'feed' as ActiveView, icon: Home, label: 'Feed' },
+  { id: 'stories' as ActiveView, icon: Camera, label: 'Stories' },
   { id: 'chat' as ActiveView, icon: MessageCircle, label: 'Chat', badge: 3 },
   { id: 'marketplace' as ActiveView, icon: ShoppingBag, label: 'Shop' },
   { id: 'wallet' as ActiveView, icon: Wallet, label: 'Wallet' },
@@ -27,7 +29,7 @@ const navItems = [
 export function BottomNavigation({ activeView, onViewChange }: BottomNavigationProps) {
   return (
     <nav className="border-t bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="grid grid-cols-5 gap-1 px-2 py-2">
+      <div className="grid grid-cols-6 gap-1 px-2 py-2">
         {navItems.map((item) => (
           <Button
             key={item.id}

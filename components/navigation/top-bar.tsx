@@ -32,11 +32,13 @@ import {
   MessageSquare,
   Heart,
   UserPlus,
-  Gift
+  Gift,
+  Camera
 } from 'lucide-react';
 
 interface TopBarProps {
   activeView: ActiveView;
+  onViewChange?: (view: ActiveView) => void;
 }
 
 const viewTitles = {
@@ -45,6 +47,7 @@ const viewTitles = {
   marketplace: 'Marketplace',
   wallet: 'Wallet',
   profile: 'Profile',
+  stories: 'Stories',
 };
 
 // Mock notifications data
@@ -87,7 +90,7 @@ const mockNotifications = [
   },
 ];
 
-export function TopBar({ activeView }: TopBarProps) {
+export function TopBar({ activeView, onViewChange }: TopBarProps) {
   const { user, logout } = useAuthStore();
   const [searchExpanded, setSearchExpanded] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
@@ -187,6 +190,18 @@ export function TopBar({ activeView }: TopBarProps) {
                 </Button>
               )}
             </div>
+
+            {/* Stories shortcut */}
+            {!searchExpanded && activeView !== 'stories' && onViewChange && (
+              <Button 
+                variant="ghost" 
+                size="sm" 
+                onClick={() => onViewChange('stories')}
+                title="Stories"
+              >
+                <Camera className="h-5 w-5" />
+              </Button>
+            )}
 
             {/* QR Code */}
             {!searchExpanded && (

@@ -91,7 +91,7 @@ export function QRCodeDialog({ open, onOpenChange }: QRCodeDialogProps) {
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="sm:max-w-md">
+      <DialogContent className="sm:max-w-md h-full overflow-x-hidden overflow-y-auto">
         <DialogHeader>
           <DialogTitle className="flex items-center space-x-2">
             <QrCode className="h-5 w-5" />

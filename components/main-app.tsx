@@ -8,8 +8,9 @@ import { ChatView } from '@/components/chat/chat-view';
 import { MarketplaceView } from '@/components/marketplace/marketplace-view';
 import { WalletView } from '@/components/wallet/wallet-view';
 import { ProfileView } from '@/components/profile/profile-view';
+import { StoryPage } from '@/components/stories/story-page';
 
-export type ActiveView = 'feed' | 'chat' | 'marketplace' | 'wallet' | 'profile';
+export type ActiveView = 'feed' | 'chat' | 'marketplace' | 'wallet' | 'profile' | 'stories';
 
 export function MainApp() {
   const [activeView, setActiveView] = useState<ActiveView>('feed');
@@ -26,6 +27,8 @@ export function MainApp() {
         return <WalletView />;
       case 'profile':
         return <ProfileView />;
+      case 'stories':
+        return <StoryPage />;
       default:
         return <FeedView />;
     }
@@ -33,7 +36,7 @@ export function MainApp() {
 
   return (
     <div className="flex flex-col h-screen bg-background">
-      <TopBar activeView={activeView} />
+      <TopBar activeView={activeView} onViewChange={setActiveView} />
       
       <main className="flex-1 overflow-hidden">
         {renderView()}
