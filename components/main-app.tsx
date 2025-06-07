@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { BottomNavigation } from '@/components/navigation/bottom-navigation';
+import { FloatingBottomNav } from '@/components/navigation/floating-bottom-nav';
 import { TopBar } from '@/components/navigation/top-bar';
 import { FeedView } from '@/components/feed/feed-view';
 import { ChatView } from '@/components/chat/chat-view';
@@ -42,10 +43,21 @@ export function MainApp() {
         {renderView()}
       </main>
       
-      <BottomNavigation 
-        activeView={activeView} 
-        onViewChange={setActiveView} 
-      />
+      {/* Mobile Bottom Navigation - Hidden on larger screens */}
+      <div className="md:hidden">
+        <BottomNavigation 
+          activeView={activeView} 
+          onViewChange={setActiveView} 
+        />
+      </div>
+      
+      {/* Floating Bottom Navigation - Visible on tablet and desktop */}
+      <div className="hidden md:block">
+        <FloatingBottomNav 
+          activeView={activeView} 
+          onViewChange={setActiveView} 
+        />
+      </div>
     </div>
   );
 }
