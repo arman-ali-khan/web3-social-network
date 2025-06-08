@@ -1,12 +1,9 @@
 import './globals.css';
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
 import { ThemeProvider } from '@/components/providers/theme-provider';
 import { Web3Provider } from '@/components/providers/web3-provider';
 import { Toaster } from '@/components/ui/sonner';
 import { PWAInstaller } from '@/components/pwa/pwa-installer';
-
-const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'Web3Social - Decentralized Social Network',
@@ -48,7 +45,7 @@ export default function RootLayout({
         <meta name="format-detection" content="telephone=no" />
         <meta name="mobile-web-app-capable" content="yes" />
       </head>
-      <body className={`${inter.className} safe-area-inset`}>
+      <body className={`safe-area-inset`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

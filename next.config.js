@@ -18,19 +18,8 @@ const nextConfig = {
   experimental: {
     appDir: true,
   },
-  async headers() {
-    return [
-      {
-        source: '/(.*)',
-        headers: [
-          {
-            key: 'Cross-Origin-Opener-Policy',
-            value: 'same-origin-allow-popups',
-          },
-        ],
-      },
-    ];
-  },
+  // Remove headers configuration when using output: 'export'
+  // Headers are not supported with static export
 };
 
 module.exports = withPWA(nextConfig);
